@@ -21,7 +21,7 @@
 ulimit -n 4096
 
 # set a minimalist PATH
-PATH="/bin:/sbin:/usr/bin"
+PATH="/bin:/sbin"
 
 NAME="$(basename $0)"
 unset ISBOOT

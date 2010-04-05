@@ -22,7 +22,6 @@ package "coreutils" do
   action :install
 end
 
-
 service "tomcat6" do
   action :nothing
 end
