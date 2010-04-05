@@ -18,6 +18,10 @@
 #
 
 #include_recipe "java"
+package "coreutils" do
+  action :install
+end
+
 
 service "tomcat6" do
   action :nothing
