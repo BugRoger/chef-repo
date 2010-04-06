@@ -12,7 +12,7 @@ execute "update-java-alternatives" do
   command "update-java-alternatives -s java-6-sun"
   only_if do platform?("ubuntu", "debian") end
   ignore_failure true
-  returns 1
+  returns 2
   action :nothing
 end
 
