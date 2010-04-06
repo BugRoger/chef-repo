@@ -19,7 +19,7 @@ end
 
 template "/etc/tomcat6/server.xml" do
   source "server.xml.erb"
-  owner "app"
+  owner "#{node[:tomcat][:user]}"
   group "admin"
   mode 0644
   
