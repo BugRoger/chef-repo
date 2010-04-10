@@ -48,10 +48,10 @@ template "#{node[:nginx][:dir]}/sites-available/tomcat" do
   owner "root"
   group "root"
   mode 0644
-  variables({
-    :proxy_port => "8080"
-    :server_name => "#node[:hostname]"
-  })
+  variables(
+    :proxy_port => "8080",
+    :server_name => node[:hostname]
+  )
 end
 
 nginx_site "tomcat" do
