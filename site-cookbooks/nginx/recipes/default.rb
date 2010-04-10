@@ -59,6 +59,7 @@ service "nginx" do
   action [ :enable, :start ]
 end
 
+
 nginx_site "tomcat" do
   action :enable
 end
