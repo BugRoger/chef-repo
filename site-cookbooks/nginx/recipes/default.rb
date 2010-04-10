@@ -54,12 +54,11 @@ template "#{node[:nginx][:dir]}/sites-available/tomcat" do
   )
 end
 
-nginx_site "tomcat" do
-  action :enable
-end
-
-
 service "nginx" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
+end
+
+nginx_site "tomcat" do
+  action :enable
 end
