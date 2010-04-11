@@ -4,7 +4,7 @@ releases_dir = "#{node[:deploy][:deploy_to]}/releases"
 current_dir  = "#{node[:deploy][:deploy_to]}/current"
 
 release_name = Time.now.utc.strftime("%Y%m%d%H%M%S")
-release_dir  = releases_dir "/" + release_name
+release_dir  = releases_dir + "/" + release_name
 
 webapp_home  = "/usr/share/tomcat6/webapps/#{node[:deploy][:context]}" 
 
