@@ -8,6 +8,7 @@ release_dir  = releases_dir + "/" + release_name
 
 webapp_home  = "/usr/share/tomcat6/webapps/#{node[:deploy][:context]}" 
 
+
 directory release_dir do
   mode 0755
   owner "root"
