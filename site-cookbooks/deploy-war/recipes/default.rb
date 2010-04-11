@@ -42,7 +42,7 @@ link webapp_home do
   to current_dir
 end
 
-releases[2..-6].each do |release|
+releases[2..-5].each do |release|
   directory release do
     recursive true
     action :delete
