@@ -1,8 +1,12 @@
 #
 # Cookbook Name:: deploy-war
+releases_dir = "#{node[:deploy][:deploy_to]}/releases"
+current_dir  = "#{node[:deploy][:deploy_to]}/current"
 
 release_name = Time.now.utc.strftime("%Y%m%d%H%M%S")
-release_dir  = "#{node[:deploy][:deploy_to]}/releases/" + release_name
+release_dir  = releases_dir "/" + release_name
+
+webapp_home  = "/usr/share/tomcat6/webapps/#{node[:deploy][:context]}" 
 
 directory release_dir do
   mode 0755
@@ -12,6 +16,9 @@ directory release_dir do
   action :create
   recursive true
 end
+
+releases        = capture("ls -x #{releases_dir}").split.sort
+current_release = releases.last
 
 remote_file "war" do
   path "/tmp/#{node[:deploy][:artifact]}"
@@ -26,3 +33,10 @@ bash "unjar-war" do
   EOH
 end
 
+link current_dir do
+  to release_dir
+end
+
+link wepapp_home do
+  to current_dir
+end
