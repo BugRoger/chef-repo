@@ -1,7 +1,10 @@
 #
 # Cookbook Name:: deploy-war
 
-directory "#{node[:deploy][:release_dir]}" do
+release_name = Time.now.utc.strftime("%Y%m%d%H%M%S")
+release_dir  = "#{node[:deploy][:deploy_to]}/releases/".release_name
+
+directory release_dir do
   mode 0755
   owner "root"
   group "root"
@@ -17,7 +20,7 @@ end
 
 bash "unjar-war" do
   user "root"
-  cwd "#{node[:deploy][:release_dir]}"
+  cwd release_dir
   code <<-EOH
   jar xf /tmp/#{node[:deploy][:artifact]}
   EOH
