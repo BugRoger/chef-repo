@@ -18,7 +18,7 @@ directory release_dir do
   recursive true
 end
 
-releases        = capture("ls -x #{releases_dir}").split.sort
+releases        = Dir.entries(releases_dir).sort
 current_release = releases.last
 
 remote_file "war" do
