@@ -15,5 +15,11 @@ remote_file "war" do
   source "http://#{node[:deploy][:bucket]}.s3.amazonaws.com/ivy/#{node[:deploy][:org]}/#{node[:deploy][:module]}/#{node[:deploy][:revision]}/#{node[:deploy][:artifact]}"
 end
 
-
+bash "unjar-war" do
+  user "root"
+  cwd "#{node[:deploy][:release_dir]}"
+  code <<-EOH
+  jar xf /tmp/#{node[:deploy][:artifact]}
+  EOH
+end
 
