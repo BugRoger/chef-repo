@@ -50,7 +50,9 @@ template "#{node[:nginx][:dir]}/sites-available/tomcat" do
   mode 0644
   variables(
     :proxy_port => "8080",
-    :server_name => node[:hostname]
+    :server_name => node[:hostname],
+    :webapp_root    => "/var/lib/tomcat6/webapps",
+    :webapp_context => "helloworld"
   )
 end
 
