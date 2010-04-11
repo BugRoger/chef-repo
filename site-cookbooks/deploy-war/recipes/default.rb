@@ -38,6 +38,6 @@ link current_dir do
   to release_dir
 end
 
-link wepapp_home do
+link webapp_home do
   to current_dir
 end
