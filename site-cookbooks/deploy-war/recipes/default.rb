@@ -41,3 +41,10 @@ end
 link webapp_home do
   to current_dir
 end
+
+releases.slice!(-5).each do |release|
+  directory release do
+    recursive true
+    action :delete
+  end
+end
